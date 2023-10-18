@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+      int n=arr.size();
+      unordered_map<int,int>map;
+      for(int i=0;i<n;i++)
+      {
+        map[arr[i]]++;
+      }
+      std::unordered_set<int> uniqueCounts; // To store unique counts
+
+        for (const auto& kv : map) {
+            if (uniqueCounts.find(kv.second) != uniqueCounts.end()) {
+                return false; // If a count is not unique, return false
+            }
+            uniqueCounts.insert(kv.second);
+        }
+
+        return true; // All counts are unique
+    }
+};
